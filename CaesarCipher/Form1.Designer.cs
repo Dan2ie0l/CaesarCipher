@@ -35,6 +35,8 @@
             this.txtCrypted2 = new System.Windows.Forms.TextBox();
             this.lstNormal = new System.Windows.Forms.ListBox();
             this.txtNumber = new System.Windows.Forms.TextBox();
+            this.txtdecr = new System.Windows.Forms.TextBox();
+            this.txtNumber2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtNormal
@@ -63,12 +65,13 @@
             // 
             // btndec
             // 
-            this.btndec.Location = new System.Drawing.Point(472, 123);
+            this.btndec.Location = new System.Drawing.Point(592, 117);
             this.btndec.Name = "btndec";
             this.btndec.Size = new System.Drawing.Size(146, 31);
             this.btndec.TabIndex = 5;
             this.btndec.Text = "Decryption";
             this.btndec.UseVisualStyleBackColor = true;
+            this.btndec.Click += new System.EventHandler(this.btndec_Click);
             // 
             // txtCrypted2
             // 
@@ -87,16 +90,32 @@
             // 
             // txtNumber
             // 
-            this.txtNumber.Location = new System.Drawing.Point(115, 123);
+            this.txtNumber.Location = new System.Drawing.Point(117, 117);
             this.txtNumber.Name = "txtNumber";
             this.txtNumber.Size = new System.Drawing.Size(84, 20);
             this.txtNumber.TabIndex = 10;
+            // 
+            // txtdecr
+            // 
+            this.txtdecr.Location = new System.Drawing.Point(380, 173);
+            this.txtdecr.Name = "txtdecr";
+            this.txtdecr.Size = new System.Drawing.Size(358, 20);
+            this.txtdecr.TabIndex = 11;
+            // 
+            // txtNumber2
+            // 
+            this.txtNumber2.Location = new System.Drawing.Point(407, 123);
+            this.txtNumber2.Name = "txtNumber2";
+            this.txtNumber2.Size = new System.Drawing.Size(84, 20);
+            this.txtNumber2.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtNumber2);
+            this.Controls.Add(this.txtdecr);
             this.Controls.Add(this.txtNumber);
             this.Controls.Add(this.lstNormal);
             this.Controls.Add(this.txtCrypted2);
@@ -120,6 +139,8 @@
         private System.Windows.Forms.TextBox txtCrypted2;
         private System.Windows.Forms.ListBox lstNormal;
         private System.Windows.Forms.TextBox txtNumber;
+        private System.Windows.Forms.TextBox txtdecr;
+        private System.Windows.Forms.TextBox txtNumber2;
     }
 }
 

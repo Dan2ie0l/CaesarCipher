@@ -16,29 +16,67 @@ namespace CaesarCipher
         {
             InitializeComponent();
         }
+        private static char Cipher(char ch , int shift)
+        {
+            if (!char.IsLetter(ch))
+            {
+                return ch;
+            }
+
+            char letter = char.IsUpper(ch) ? 'A' : 'a';
+            return (char)((((ch + shift) - letter) % 26) + letter);
+        }
 
         private void btnec_Click(object sender, EventArgs e)
         {
             string text = Convert.ToString(txtNormal.Text);
             int shift = int.Parse(txtNumber.Text);
-           
-            char[] alphabet = new char[26] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-            char[] arr = text.ToCharArray();
-
-            for (int i = 0; i < alphabet.Length; i++)
+            string encrypted = "";
+            foreach(char ch in text)
             {
-                for (int j = 0; j < arr.Length; j++)
-                {
-                    if (arr[j] == alphabet[i])
-                        arr[j] = alphabet[(i + shift) % alphabet.Length];
-                    break;
-                }
+                encrypted += Cipher(ch, shift);
             }
+           
+            
+            txtCrypted.Text = Convert.ToString(encrypted);
+
+        }
+
+        private void btndec_Click(object sender, EventArgs e)
+        {
+            string text = Convert.ToString(txtCrypted2.Text);
+            string decrypted = "";
+            int shift = 0;
+            
+                 shift = int.Parse(txtNumber2.Text);
+            
+
+            string decr = "";
+            
+            foreach (char ch in text)
+                {
+                    decr += Cipher(ch, 26-shift);
+                }
+
+            txtdecr.Text = Convert.ToString(decr);
+
+            for (int i = 0; i < 26; i++)
+            {
+                foreach (char ch in text)
+                {
+                    decrypted += Cipher(ch, 26-i);
+                }
+                
+                
+                lstNormal.Items.Add((decrypted+" ").ToString() );
+                decrypted = " ";    
 
 
-            string word = new string(arr);
-            txtCrypted.Text = Convert.ToString(word);
+            }
+            
 
+           
+            
         }
     }
 }
