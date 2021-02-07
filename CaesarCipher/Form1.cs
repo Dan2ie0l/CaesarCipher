@@ -21,39 +21,21 @@ namespace CaesarCipher
         {
             string text = Convert.ToString(txtNormal.Text);
             int shift = int.Parse(txtNumber.Text);
-            text = text.ToLower();
-
+           
+            char[] alphabet = new char[26] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
             char[] arr = text.ToCharArray();
 
-
-
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < alphabet.Length; i++)
             {
-                char letter = arr[i];
-
-                if (letter != ' ')
+                for (int j = 0; j < arr.Length; j++)
                 {
-                    letter = (char)(letter + shift);
+                    if (arr[j] == alphabet[i])
+                        arr[j] = alphabet[(i + shift) % alphabet.Length];
+                    break;
                 }
-               
-                
-                if (letter>'z')
-                {
-                   
-                    
-                    
-                        letter = (char)(letter - 26);
-                    
-                }
-                
-                else if (letter < 'a')
-                {
-                        letter = (char)(letter + 26);
-                    
-                }
-                arr[i] = letter;
-               
             }
+
+
             string word = new string(arr);
             txtCrypted.Text = Convert.ToString(word);
 
