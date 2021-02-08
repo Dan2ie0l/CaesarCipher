@@ -16,7 +16,7 @@ namespace CaesarCipher
         {
             InitializeComponent();
         }
-        private static char Cipher(char ch , int shift)
+        private static char Cipher(char ch, int shift)
         {
             if (!char.IsLetter(ch))
             {
@@ -32,12 +32,12 @@ namespace CaesarCipher
             string text = Convert.ToString(txtNormal.Text);
             int shift = int.Parse(txtNumber.Text);
             string encrypted = "";
-            foreach(char ch in text)
+            foreach (char ch in text)
             {
                 encrypted += Cipher(ch, shift);
             }
-           
-            
+
+
             txtCrypted.Text = Convert.ToString(encrypted);
 
         }
@@ -46,37 +46,38 @@ namespace CaesarCipher
         {
             string text = Convert.ToString(txtCrypted2.Text);
             string decrypted = "";
-            int shift = 0;
-            
-                 shift = int.Parse(txtNumber2.Text);
-            
+            int shift ;
+            try
+            {
+                shift = int.Parse(txtNumber2.Text);
+            }
+            catch (Exception)
+            {
 
+                shift = 0;
+            }
+           
             string decr = "";
-            
             foreach (char ch in text)
-                {
-                    decr += Cipher(ch, 26-shift);
-                }
-
+            {
+                decr += Cipher(ch, 26 - shift);
+            }
             txtdecr.Text = Convert.ToString(decr);
-
             for (int i = 0; i < 26; i++)
             {
                 foreach (char ch in text)
                 {
-                    decrypted += Cipher(ch, 26-i);
+                    decrypted += Cipher(ch, 26 - i);
                 }
-                
-                
-                lstNormal.Items.Add((decrypted+" ").ToString() );
-                decrypted = " ";    
-
+                lstNormal.Items.Add((decrypted + " ").ToString());
+                decrypted = " ";
 
             }
-            
 
-           
-            
+
+
+
         }
+
     }
 }
