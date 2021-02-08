@@ -30,8 +30,17 @@ namespace CaesarCipher
         private void btnec_Click(object sender, EventArgs e)
         {
             string text = Convert.ToString(txtNormal.Text);
-            int shift = int.Parse(txtNumber.Text);
             string encrypted = "";
+            int shift;
+            try
+            {
+                shift = int.Parse(txtNumber.Text);
+            }
+            catch (Exception)
+            {
+
+                shift = 0;
+            }
             foreach (char ch in text)
             {
                 encrypted += Cipher(ch, shift);
@@ -46,7 +55,7 @@ namespace CaesarCipher
         {
             string text = Convert.ToString(txtCrypted2.Text);
             string decrypted = "";
-            int shift ;
+            int shift;
             try
             {
                 shift = int.Parse(txtNumber2.Text);
@@ -56,7 +65,7 @@ namespace CaesarCipher
 
                 shift = 0;
             }
-           
+
             string decr = "";
             foreach (char ch in text)
             {
